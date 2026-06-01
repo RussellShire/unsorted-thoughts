@@ -40,10 +40,14 @@
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
+
+                console.log('response', response)
+                console.log('response json', response.json())
+                console.log('response text', response.text())
+
                 return response.text(); // Note: we want .text(), not .json()
             })
             .then(htmlData => {
-                console.log("htmlData!", htmlData);
                 // Since it returns HTML, we can inject it right into our page
                 document.getElementById('content').innerHTML = htmlData;
             })
