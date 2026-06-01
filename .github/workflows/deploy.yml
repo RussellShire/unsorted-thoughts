@@ -28,6 +28,11 @@ jobs:
           sed -i 's/DRIVE_API_KEY_PLACEHOLDER/${{ secrets.GOOGLE_DRIVE_API_KEY }}/g' index.html
           sed -i 's/DOC_ID_PLACEHOLDER/${{ secrets.GOOGLE_DOC_ID }}/g' index.html
 
+
+      # DIAGNOSTIC STEP: Print the file to logs to see if it changed
+      - name: Check File Content
+        run: cat index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5 
       - name: Upload Artifact
