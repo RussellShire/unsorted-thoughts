@@ -43,7 +43,7 @@
                 return response.text(); // Note: we want .text(), not .json()
             })
             .then(htmlData => {
-                console.log("htmlData", htmlData);
+                console.log("htmlData!", htmlData);
                 // Since it returns HTML, we can inject it right into our page
                 document.getElementById('content').innerHTML = htmlData;
             })
