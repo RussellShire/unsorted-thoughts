@@ -25,7 +25,7 @@ jobs:
 
       - name: Inject Google Secrets
         run: |
-          sed -i 's/DOCS_API_KEY_PLACEHOLDER/${{ secrets.GOOGLE_API_KEY }}/g' index.html
+          sed -i 's/DRIVE_API_KEY_PLACEHOLDER/${{ secrets.GOOGLE_DRIVE_API_KEY }}/g' index.html
           sed -i 's/DOC_ID_PLACEHOLDER/${{ secrets.GOOGLE_DOC_ID }}/g' index.html
 
       - name: Setup Pages
