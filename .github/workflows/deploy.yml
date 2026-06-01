@@ -1,0 +1,43 @@
+name: Deploy Static Content to Pages
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Replaces placeholders in index.html with secrets stored in your GitHub Repo
+      - name: Inject Google Secrets
+        run: |
+          sed -i 's/DOCS_API_KEY_PLACEHOLDER/${{ secrets.GOOGLE_DOCS_API_KEY }}/g' index.html
+          sed -i 's/DOC_ID_PLACEHOLDER/${{ secrets.GOOGLE_DOC_ID }}/g' index.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # Uploads the entire root directory
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
