@@ -25,7 +25,10 @@
             margin-block-end: 0;
         }
 
-        span:blank, span:empty {
+        p:has(span:empty), 
+        p:has(span:blank), 
+        span:blank, 
+        span:empty {
             display: block;
             height: 1.5em;
         }
