@@ -42,9 +42,21 @@
                 }
                 return response.text(); // Note: we want .text(), not .json()
             })
-            .then(htmlData => {
-                // Since it returns HTML, we can inject it right into our page
-                document.getElementById('content').innerHTML = htmlData;
+            .then(htmlString => {
+                // 1. Parse the incoming string into a temporary HTML document
+                const parser = new DOMParser();
+                const googleDoc = parser.parseFromString(htmlString, 'text/html');
+                
+                // 2. Target Google's body content, ignoring their <head> and <style> tags
+                const docBody = googleDoc.body;
+
+                // 3. Optional: Strip inline styling that Google forces on spans (like fonts/colors)
+                // This forces the text to adapt to YOUR website's CSS instead of Google's
+                const elementsWithStyle = docBody.querySelectorAll('[style]');
+                elementsWithStyle.forEach(el => el.removeAttribute('style'));
+
+                // 4. Inject just the clean HTML structural text (p, h1, h2, etc.) into your page
+                document.getElementById('content').innerHTML = docBody.innerHTML;
             })
             .catch(error => {
                 document.getElementById('content').innerHTML = `<span class="error">Failed to fetch document via Drive API.</span>`;
