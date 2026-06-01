@@ -19,6 +19,11 @@
             background: #ffffff;
             white-space: pre-wrap; /* Preserves line breaks from the doc */
         }
+
+        p {
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
         .error { color: #d93025; font-weight: bold; }
     </style>
 </head>
@@ -54,6 +59,8 @@
                 // This forces the text to adapt to YOUR website's CSS instead of Google's
                 const elementsWithStyle = docBody.querySelectorAll('[style]');
                 elementsWithStyle.forEach(el => el.removeAttribute('style'));
+
+
 
                 // 4. Inject just the clean HTML structural text (p, h1, h2, etc.) into your page
                 document.getElementById('content').innerHTML = docBody.innerHTML;
