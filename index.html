@@ -71,6 +71,8 @@
 
                 const paragraphs = docBody.querySelectorAll('p');
 
+                let publishThought = true;
+
                 paragraphs.forEach(paragraph => {
                     const text = paragraph.innerText.trim()
 
@@ -80,10 +82,17 @@
                     }
 
                     // Split into array of thoughts by splitting on '#'
-                    if (text === '#') {
+                    if (text.includes('#') && !text.toLowerCase().includes('no publish')) {
                         // Start a new thought
                         thoughts.push([]);
-                    } else {
+                    }
+
+                    if (text.includes('#') && text.toLowerCase().includes('no publish')) {
+                        // Start a new thought
+                        publishThought = false;
+                    }
+
+                    if (publishThought) {
                         thoughts[thoughts.length -1].push(paragraph);
                     }
                 });
