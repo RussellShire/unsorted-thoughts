@@ -135,7 +135,7 @@
                 });
 
                 // Update the counter
-                const counter = document.getElementsByClassName('counter');
+                const counter = document.querySelector('.counter');
                 counter.innerText = '';
                 counter.innerText = thoughts.length;
 
@@ -157,6 +157,11 @@
                     const maxDegrees = 3; 
                     const randomAngle = (Math.random() * maxDegrees * 2) - maxDegrees;
                     thoughtCard.style.transform = `rotate(${randomAngle}deg)`;
+
+                    // randomise z-index
+                    const maxZIndex = 5;
+                    const randomZIndex = (Math.random() * maxZIndex * 2) - maxZIndex;
+                    thoughtCard.style.zIndex = `${randomZIndex}`;
 
                     // Add the finished card to the main container
                     contentContainer.appendChild(thoughtCard);
