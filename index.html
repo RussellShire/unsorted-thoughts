@@ -25,18 +25,8 @@
             margin-block-end: 0;
         }
 
-        p:has(span:empty), 
-        p:has(span:blank) {
-            display: block;
-            height: 1.5em;
-            margin-block-start: 1em !important;
-            margin-block-end: 1em !important;
-        }
-
         .paragraph {
-            background: red;
             height: 1rem;
-            border: 1px solid blue;
         }
         
         .error { color: #d93025; font-weight: bold; }
@@ -75,14 +65,14 @@
                 const elementsWithStyle = docBody.querySelectorAll('[style]');
                 elementsWithStyle.forEach(el => el.removeAttribute('style'));
 
-const spans = docBody.querySelectorAll('span'); // Added quotes
+                const spans = docBody.querySelectorAll('span'); // Added quotes
 
-spans.forEach(span => {
-    // Checks if the span is empty or just has whitespace
-    if (!span.innerText.trim()) { 
-        span.classList.add('paragraph'); // Safer, modern way to add classes
-    }
-});
+                spans.forEach(span => {
+                    // Checks if the span is empty or just has whitespace
+                    if (!span.innerText.trim()) { 
+                        span.classList.add('paragraph'); // Safer, modern way to add classes
+                    }
+                });
 
                 // 4. Inject just the clean HTML structural text (p, h1, h2, etc.) into your page
                 document.getElementById('content').innerHTML = docBody.innerHTML;
