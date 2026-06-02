@@ -32,6 +32,12 @@
             margin-block-start: 1em !important;
             margin-block-end: 1em !important;
         }
+
+        .paragraph {
+            background: red;
+            height: 1rem;
+            border: 1px solid blue;
+        }
         
         .error { color: #d93025; font-weight: bold; }
     </style>
@@ -69,7 +75,12 @@
                 const elementsWithStyle = docBody.querySelectorAll('[style]');
                 elementsWithStyle.forEach(el => el.removeAttribute('style'));
 
-
+                const spans = docBody.querySelectorAll(span);
+                spans.forEach(span => {
+                    if (!span.innerText) {
+                        span.addAttribute('class', 'paragraph');
+                    }
+                })
 
                 // 4. Inject just the clean HTML structural text (p, h1, h2, etc.) into your page
                 document.getElementById('content').innerHTML = docBody.innerHTML;
