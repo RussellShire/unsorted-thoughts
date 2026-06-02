@@ -29,10 +29,6 @@
             display: block;
             height: 1rem;
         }
-
-        .testing {
-            color: red;
-        }
         
         .error { color: #d93025; font-weight: bold; }
     </style>
@@ -71,27 +67,41 @@
                 const paragraphs = docBody.querySelectorAll('p');
 
                 paragraphs.forEach(paragraph => {
-                    const span = paragraph.firstChild; // pTags contain spans
-                    const text = span.innerText.trim()
+                    const text = paragraph.innerText.trim()
 
                     // Set line breaks on empty spans
                     if (!text) { 
-                        span.classList.add('lineBreak');
+                        paragraph.classList.add('lineBreak');
                     }
 
+                    // Split into array of thoughts by splitting on '#'
                     if (text === '#') {
-                        span.classList.add('testing')
-
+                        // Start a new thought
                         thoughts.push([]);
+                    } else {
+                        thoughts[thoughts.length -1].push(paragraph);
                     }
-
-                    thoughts[thoughts.length -1].push(paragraph);
-
                 });
 
-                console.log('thoughts', thoughts);
+                // 2. Clear the target container and inject the structured Flex items
+                const contentContainer = document.getElementById('content');
+                contentContainer.innerHTML = ''; // Clear previous content
 
-                document.getElementById('content').innerHTML = docBody.innerHTML;
+                thoughts.forEach(thoughtElements => {
+                    // Create a wrapper div for this specific "thought" card
+                    const thoughtCard = document.createElement('div');
+                    thoughtCard.classList.add('thought-card');
+
+                    // Append all paragraphs belonging to this thought into the card
+                    thoughtElements.forEach(p => {
+                        thoughtCard.appendChild(p.cloneNode(true));
+                    });
+
+                    // Add the finished card to the main container
+                    contentContainer.appendChild(thoughtCard);
+                });
+
+                // document.getElementById('content').innerHTML = docBody.innerHTML;
             })
             .catch(error => {
                 document.getElementById('content').innerHTML = `<span class="error">Failed to fetch document via Drive API.</span>`;
