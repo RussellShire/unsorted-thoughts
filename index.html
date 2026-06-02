@@ -69,7 +69,7 @@
 </head>
 <body>
     <div class="wrapper">     
-        <h1>Unsorted Thoughts</h1><div>(<span class="counter">?</span>)</span>
+        <div style="display: flex"><h1>Unsorted Thoughts</h1><div>(<span class="counter">?</span>)</span></div>
         <div id="content">Thinking (sort of)...</div>
     </div>
 
@@ -136,8 +136,9 @@
 
                 // Update the counter
                 const counter = document.querySelector('.counter');
-                counter.innerText = '';
-                counter.innerText = thoughts.length;
+                if (counter) {
+                    counter.innerText = thoughts.length;
+                }
 
                 // Create a div for each 'thought'
                 const contentContainer = document.getElementById('content');
@@ -160,7 +161,7 @@
 
                     // randomise z-index
                     const maxZIndex = 5;
-                    const randomZIndex = (Math.random() * maxZIndex * 2) - maxZIndex;
+                    const randomZIndex = Math.floor((Math.random() * maxZIndex * 2) - maxZIndex);
                     thoughtCard.style.zIndex = `${randomZIndex}`;
 
                     // Add the finished card to the main container
