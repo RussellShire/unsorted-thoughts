@@ -25,19 +25,9 @@
             margin-block-end: 0;
         }
 
-        /* p:has(span:empty), 
-        p:has(span:blank) {
-            display: block;
-            height: 1.5em;
-            margin-block-start: 1em !important;
-            margin-block-end: 1em !important;
-        }
- */
         .paragraph {
-            background: red;
             display: block;
             height: 1rem;
-            border: 1px solid blue;
         }
         
         .error { color: #d93025; font-weight: bold; }
@@ -61,31 +51,27 @@
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                return response.text(); // Note: we want .text(), not .json()
+                return response.text();
             })
             .then(htmlString => {
-                // 1. Parse the incoming string into a temporary HTML document
                 const parser = new DOMParser();
                 const googleDoc = parser.parseFromString(htmlString, 'text/html');
                 
-                // 2. Target Google's body content, ignoring their <head> and <style> tags
                 const docBody = googleDoc.body;
 
-                // 3. Optional: Strip inline styling that Google forces on spans (like fonts/colors)
-                // This forces the text to adapt to YOUR website's CSS instead of Google's
                 const elementsWithStyle = docBody.querySelectorAll('[style]');
                 elementsWithStyle.forEach(el => el.removeAttribute('style'));
 
-                const spans = docBody.querySelectorAll('span'); // Added quotes
+                const pTags = docBody.querySelectorAll('p');
 
-                spans.forEach(span => {
-                    // Checks if the span is empty or just has whitespace
-                    if (!span.innerText.trim()) { 
-                        span.classList.add('paragraph'); // Safer, modern way to add classes
+                pTags.forEach(pTag => {
+                    const span = pTag.firstChild;
+                    const text = span.innerText.trim()
+                    if (!text) { 
+                        span.classList.add('paragraph');
                     }
                 });
 
-                // 4. Inject just the clean HTML structural text (p, h1, h2, etc.) into your page
                 document.getElementById('content').innerHTML = docBody.innerHTML;
             })
             .catch(error => {
