@@ -66,6 +66,8 @@
                 const elementsWithStyle = docBody.querySelectorAll('[style]');
                 elementsWithStyle.forEach(el => el.removeAttribute('style'));
 
+                const thoughts = [[]];
+
                 const paragraphs = docBody.querySelectorAll('p');
 
                 paragraphs.forEach(paragraph => {
@@ -77,11 +79,17 @@
                         span.classList.add('lineBreak');
                     }
 
-                    if (text = '#')
-                    {
+                    if (text === '#') {
                         span.classList.add('testing')
+
+                        thoughts.push([]);
                     }
+
+                    thoughts[thoughts.length -1].push(paragraph);
+
                 });
+
+                console.log('thoughts', thoughts);
 
                 document.getElementById('content').innerHTML = docBody.innerHTML;
             })
