@@ -21,12 +21,17 @@
 
         .header-container {
             display: flex;
-            align-items: center;
+            align-items: baseline;
+            gap: 1rem;
         }
 
         #content {
             background: #ffffff;
             white-space: pre-wrap; /* Preserves line breaks from the doc */
+            column-count: 5;
+            column-gap: 20px;
+            padding: 20px;
+            width: 100%;
         }
 
         p {
@@ -42,24 +47,7 @@
         .title {
             font-weight: 600;
         }
-        
-        .error { color: #d93025; font-weight: bold; }
-
-        /* #content {
-            column-count: 5;
-            column-gap: 20px;
-            padding: 20px;
-            width: 100%;
-        } */
-
-        #content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            grid-template-rows: masonry; /* Elements now share a single stacking playground */
-            gap: 20px;
-            padding: 20px;
-        }
-        
+                
         /* Individual thought blocks */
         .thought-card {
             background: #feff9c;
@@ -71,6 +59,8 @@
             display: inline-block;   
             width: 100%;
         }
+
+        .error { color: #d93025; font-weight: bold; }
 
         @media (max-width: 900px) {
             #content { column-count: 2; }
@@ -176,12 +166,7 @@
                     const maxDegrees = 3; 
                     const randomAngle = (Math.random() * maxDegrees * 2) - maxDegrees;
                     thoughtCard.style.transform = `rotate(${randomAngle}deg)`;
-
-                    // randomise z-index
-                    const maxZIndex = 5;
-                    const randomZIndex = Math.floor(Math.random() * maxZIndex) + 1;
-                    thoughtCard.style.zIndex = randomZIndex;
-
+                    
                     // Add the finished card to the main container
                     contentContainer.appendChild(thoughtCard);
                 });
