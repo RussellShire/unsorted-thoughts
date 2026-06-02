@@ -103,7 +103,7 @@
                 const elementsWithStyle = docBody.querySelectorAll('[style]');
                 elementsWithStyle.forEach(el => el.removeAttribute('style'));
 
-                const thoughts = [[]];
+                const thoughts = [];
 
                 const paragraphs = docBody.querySelectorAll('p');
 
@@ -134,6 +134,7 @@
                         thoughts[thoughts.length -1].push(paragraph);
                     }
 
+                    // Set title
                     if (text.charAt(text.length -1) === ':') {
                         paragraph.classList.add('title');
                     }
@@ -152,6 +153,11 @@
                     thoughtElements.forEach(p => {
                         thoughtCard.appendChild(p.cloneNode(true));
                     });
+
+                    // Set rotation
+                    const maxDegrees = 3; 
+                    const randomAngle = (Math.random() * maxDegrees * 2) - maxDegrees;
+                    thoughtCard.style.transform = `rotate(${randomAngle}deg)`;
 
                     // Add the finished card to the main container
                     contentContainer.appendChild(thoughtCard);
