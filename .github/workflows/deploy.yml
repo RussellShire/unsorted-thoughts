@@ -25,9 +25,9 @@ jobs:
 
       - name: Inject Google Secrets
         run: |
-          sed -i 's/DRIVE_API_KEY_PLACEHOLDER/${{ secrets.GOOGLE_DRIVE_API_KEY }}/g' index.html
-          sed -i 's/DOC_ID_PLACEHOLDER/${{ secrets.GOOGLE_DOC_ID }}/g' index.html
-          
+          sed -i "s/DRIVE_API_KEY_PLACEHOLDER/${{ secrets.GOOGLE_DRIVE_API_KEY }}/g" js/app.js
+          sed -i "s/DOC_ID_PLACEHOLDER/${{ secrets.GOOGLE_DOC_ID }}/g" js/app.js
+                
       - name: Setup Pages
         uses: actions/configure-pages@v5 
       - name: Upload Artifact
