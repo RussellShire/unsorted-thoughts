@@ -29,7 +29,6 @@
             background: #ffffff;
             white-space: pre-wrap; /* Preserves line breaks from the doc */
             column-count: 7;
-            column-gap: 20px;
             padding: 20px;
             width: 100%;
         }
@@ -52,7 +51,6 @@
         .thought-card {
             background: #feff9c;
             padding: 15px;
-            margin-bottom: 20px;
             filter: drop-shadow(0 0.1rem 0.75rem #333);
             
             break-inside: avoid; 
@@ -63,10 +61,9 @@
         .error { color: #d93025; font-weight: bold; }
 
 
-        @media (max-width: 1600px) {
+        @media (max-width: 1200px) {
             #content { column-count: 3; }
         }
-
         @media (max-width: 900px) {
             #content { column-count: 2; }
         }
@@ -157,6 +154,8 @@
                 const contentContainer = document.getElementById('content');
                 contentContainer.innerHTML = ''; // Clear previous content
 
+                const shuffledThoughts = shuffleArray(thoughts);
+
                 thoughts.forEach(thoughtElements => {
                     // Create a wrapper div for this specific "thought" card
                     const thoughtCard = document.createElement('div');
@@ -181,6 +180,17 @@
                 console.error('Error:', error);
             });
 
+        function shuffleArray(array) {
+            // Loop backwards from the last element down to the second element
+            for (let i = array.length - 1; i > 0; i--) {
+                // Pick a random index from 0 to i
+                const j = Math.floor(Math.random() * (i + 1));
+                
+                // Swap elements array[i] and array[j] using destructuring assignment
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
     </script>
 </body>
 </html>
