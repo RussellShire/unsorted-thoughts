@@ -17,7 +17,7 @@
         }
 
         .wrapper {
-            padding: 0.5rem;
+            padding: 1rem;
         }
 
         #content {
@@ -35,10 +35,10 @@
             height: 1rem;
         }
 
-        .thought-card {
+        /* .thought-card {
             border-bottom: 1px #333 dashed;
             margin-bottom: 1rem;
-        }
+        } */
 
 
         .title {
@@ -46,6 +46,34 @@
         }
         
         .error { color: #d93025; font-weight: bold; }
+
+        #content {
+            column-count: 3;
+            column-gap: 20px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* Individual thought blocks */
+        .thought-card {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;      /* Spacing between cards vertically */
+            
+            /* CRITICAL STEP: Prevents a card from splitting in half across columns */
+            break-inside: avoid; 
+            display: inline-block;    /* Older browser fallback safety */
+            width: 100%;
+        }
+
+        @media (max-width: 900px) {
+            #content { column-count: 2; }
+        }
+        @media (max-width: 600px) {
+            #content { column-count: 1; }
+        }
     </style>
 </head>
 <body>
