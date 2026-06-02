@@ -44,7 +44,10 @@
 
         .title {
             font-weight: 600;
+
         }
+        .error { color: #d93025; font-weight: bold; }
+
                 
         /* Individual thought blocks */
         .thought-card {
@@ -56,12 +59,22 @@
             display: inline-block;   
             width: fit-content;
         }
-
-        .thought-card:mousedown {
-            transform: rotate(0deg) !important;
+        
+        /* Straighten on press */
+        /* Mobile */
+        .thought-card:active {
+            transform: rotate(0deg) scale(0.98) !important;
+            z-index: 9999 !important;
         }
 
-        .error { color: #d93025; font-weight: bold; }
+        /* Desktop */
+        @media (hover: hover) and (pointer: fine) {
+            .thought-card:hover {
+                transform: rotate(0deg) scale(1.03) !important;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 999 !important;
+            }
+        }
 
         @media (max-width: 1500px) {
             #content { column-count: 5; }
@@ -89,7 +102,9 @@
     </div>
 
     <script>
-        // CONFIGURATION
+        // Touch support for ios to use :active class
+        document.body.addEventListener('touchstart', function() {}, {passive: true});
+        
         const API_KEY = 'DRIVE_API_KEY_PLACEHOLDER';
         const DOCUMENT_ID = 'DOC_ID_PLACEHOLDER';
 
