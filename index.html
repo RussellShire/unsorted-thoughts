@@ -69,7 +69,12 @@
 </head>
 <body>
     <div class="wrapper">     
-        <div style="display: flex"><h1>Unsorted Thoughts</h1><div>(<span class="counter">?</span>)</span></div>
+        <div style="display: flex">
+            <h1>Unsorted Thoughts</h1>
+            <div>
+                (<span class="counter">?</span>)</span>
+            </div>
+        </div>
         <div id="content">Thinking (sort of)...</div>
     </div>
 
@@ -161,8 +166,8 @@
 
                     // randomise z-index
                     const maxZIndex = 5;
-                    const randomZIndex = Math.floor((Math.random() * maxZIndex * 2) - maxZIndex);
-                    thoughtCard.style.zIndex = `${randomZIndex}`;
+                    const randomZIndex = Math.floor(Math.random() * maxZIndex) + 1;
+                    thoughtCard.style.zIndex = randomZIndex;
 
                     // Add the finished card to the main container
                     contentContainer.appendChild(thoughtCard);
