@@ -84,6 +84,7 @@
                     // Split into array of thoughts by splitting on '#'
                     if (text.includes('#') && !text.toLowerCase().includes('no publish')) {
                         // Start a new thought
+                        publishThought = true;
                         thoughts.push([]);
                     }
 
