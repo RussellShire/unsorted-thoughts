@@ -25,9 +25,13 @@
             margin-block-end: 0;
         }
 
-        .paragraph {
+        .lineBreak {
             display: block;
             height: 1rem;
+        }
+
+        .testing {
+            color: red;
         }
         
         .error { color: #d93025; font-weight: bold; }
@@ -62,13 +66,20 @@
                 const elementsWithStyle = docBody.querySelectorAll('[style]');
                 elementsWithStyle.forEach(el => el.removeAttribute('style'));
 
-                const pTags = docBody.querySelectorAll('p');
+                const paragraphs = docBody.querySelectorAll('p');
 
-                pTags.forEach(pTag => {
-                    const span = pTag.firstChild;
+                paragraphs.forEach(paragraph => {
+                    const span = paragraph.firstChild; // pTags contain spans
                     const text = span.innerText.trim()
+
+                    // Set line breaks on empty spans
                     if (!text) { 
-                        span.classList.add('paragraph');
+                        span.classList.add('lineBreak');
+                    }
+
+                    if (text = '#')
+                    {
+                        span.classList.add('testing')
                     }
                 });
 
