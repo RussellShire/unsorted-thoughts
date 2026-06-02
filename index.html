@@ -34,12 +34,6 @@
             height: 1rem;
         }
 
-        /* .thought-card {
-            border-bottom: 1px #333 dashed;
-            margin-bottom: 1rem;
-        } */
-
-
         .title {
             font-weight: 600;
         }
@@ -75,7 +69,7 @@
 </head>
 <body>
     <div class="wrapper">     
-        <h1>Unsorted Thoughts</h1>
+        <h1>Unsorted Thoughts</h1><div>(<span class="counter">?</span>)</span>
         <div id="content">Thinking (sort of)...</div>
     </div>
 
@@ -95,6 +89,7 @@
                 return response.text();
             })
             .then(htmlString => {
+                // Get content from google doc
                 const parser = new DOMParser();
                 const googleDoc = parser.parseFromString(htmlString, 'text/html');
                 
@@ -103,10 +98,9 @@
                 const elementsWithStyle = docBody.querySelectorAll('[style]');
                 elementsWithStyle.forEach(el => el.removeAttribute('style'));
 
+                // Format into individual 'thoughts'
                 const thoughts = [];
-
                 const paragraphs = docBody.querySelectorAll('p');
-
                 let publishThought = true;
 
                 paragraphs.forEach(paragraph => {
@@ -140,7 +134,12 @@
                     }
                 });
 
-                // 2. Clear the target container and inject the structured Flex items
+                // Update the counter
+                const counter = document.getElementsByClassName('counter');
+                counter.innerText = '';
+                counter.innerText = thoughts.length;
+
+                // Create a div for each 'thought'
                 const contentContainer = document.getElementById('content');
                 contentContainer.innerHTML = ''; // Clear previous content
 
@@ -162,8 +161,6 @@
                     // Add the finished card to the main container
                     contentContainer.appendChild(thoughtCard);
                 });
-
-                // document.getElementById('content').innerHTML = docBody.innerHTML;
             })
             .catch(error => {
                 document.getElementById('content').innerHTML = `<span class="error">Failed to fetch document via Drive API.</span>`;
