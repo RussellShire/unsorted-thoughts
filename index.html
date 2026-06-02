@@ -34,6 +34,11 @@
             border-bottom: 1px #333 dashed;
             margin-bottom: 1rem;
         }
+
+
+        .title {
+            font-weight: 600;
+        }
         
         .error { color: #d93025; font-weight: bold; }
     </style>
@@ -74,7 +79,8 @@
                 let publishThought = true;
 
                 paragraphs.forEach(paragraph => {
-                    const text = paragraph.innerText.trim()
+                    const text = paragraph.innerText.trim();
+                    const isNewThought = text.includes('#');
 
                     // Set line breaks on empty spans
                     if (!text) { 
@@ -82,19 +88,23 @@
                     }
 
                     // Split into array of thoughts by splitting on '#'
-                    if (text.includes('#') && !text.toLowerCase().includes('no publish')) {
+                    if (isNewThought && !text.toLowerCase().includes('no publish')) {
                         // Start a new thought
                         publishThought = true;
                         thoughts.push([]);
                     }
 
-                    if (text.includes('#') && text.toLowerCase().includes('no publish')) {
-                        // Start a new thought
+                    // Skip 'no publish'
+                    if (isNewThought && text.toLowerCase().includes('no publish')) {
                         publishThought = false;
                     }
 
-                    if (publishThought) {
+                    if (publishThought && !isNewThought) {
                         thoughts[thoughts.length -1].push(paragraph);
+                    }
+
+                    if (text.charAt(text.length -1) === ':') {
+                        paragraph.classList.add('title');
                     }
                 });
 
