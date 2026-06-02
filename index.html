@@ -15,8 +15,13 @@
             color: #333;
         }
 
-        .wrapper {
+        .container {
             padding: 1rem;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
         }
 
         #content {
@@ -40,13 +45,21 @@
         
         .error { color: #d93025; font-weight: bold; }
 
-        #content {
+        /* #content {
             column-count: 5;
             column-gap: 20px;
             padding: 20px;
             width: 100%;
-        }
+        } */
 
+        #content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-rows: masonry; /* Elements now share a single stacking playground */
+            gap: 20px;
+            padding: 20px;
+        }
+        
         /* Individual thought blocks */
         .thought-card {
             background: #feff9c;
@@ -68,8 +81,8 @@
     </style>
 </head>
 <body>
-    <div class="wrapper">     
-        <div style="display: flex">
+    <div class="container">     
+        <div class="header-container">
             <h1>Unsorted Thoughts</h1>
             <div>
                 (<span class="counter">?</span>)</span>
