@@ -11,7 +11,6 @@
         body {
             font-family: "Special Elite", Roboto, sans-serif;
             margin: 40px auto;
-            max-width: 700px;
             line-height: 1.6;
             color: #333;
         }
@@ -48,7 +47,7 @@
         .error { color: #d93025; font-weight: bold; }
 
         #content {
-            column-count: 3;
+            column-count: 5;
             column-gap: 20px;
             padding: 20px;
             width: 100%;
@@ -56,15 +55,13 @@
 
         /* Individual thought blocks */
         .thought-card {
-            background: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
+            background: #feff9c;
             padding: 15px;
-            margin-bottom: 20px;      /* Spacing between cards vertically */
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0.1rem 0.75rem #333);
             
-            /* CRITICAL STEP: Prevents a card from splitting in half across columns */
             break-inside: avoid; 
-            display: inline-block;    /* Older browser fallback safety */
+            display: inline-block;   
             width: 100%;
         }
 
