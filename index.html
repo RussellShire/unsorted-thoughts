@@ -75,12 +75,14 @@
                 const elementsWithStyle = docBody.querySelectorAll('[style]');
                 elementsWithStyle.forEach(el => el.removeAttribute('style'));
 
-                const spans = docBody.querySelectorAll(span);
-                spans.forEach(span => {
-                    if (!span.innerText) {
-                        span.addAttribute('class', 'paragraph');
-                    }
-                })
+const spans = docBody.querySelectorAll('span'); // Added quotes
+
+spans.forEach(span => {
+    // Checks if the span is empty or just has whitespace
+    if (!span.innerText.trim()) { 
+        span.classList.add('paragraph'); // Safer, modern way to add classes
+    }
+});
 
                 // 4. Inject just the clean HTML structural text (p, h1, h2, etc.) into your page
                 document.getElementById('content').innerHTML = docBody.innerHTML;
