@@ -7,7 +7,7 @@ const JSON_FILE = './content/data.json';
 async function sync() {
   try {
 
-    const metaUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}?fields=modifiedTime,name,lastModifyingUser&key=${GOOGLE_DRIVE_API_KEY}`;
+    const metaUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}?fields=modifiedTime,name,lastModifyingUser&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
     const metaRes = await fetch(metaUrl);
 
     if (!metaRes.ok) {
@@ -17,7 +17,7 @@ async function sync() {
         throw new Error('Failed to fetch metadata');
     }
     // // 1. Fetch metadata first to check for changes
-    // const metaUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}?fields=name,modifiedTime,lastModifyingUser&key=${GOOGLE_DRIVE_API_KEY}`;
+    // const metaUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}?fields=name,modifiedTime,lastModifyingUser&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
     // const metaRes = await fetch(metaUrl);
     // if (!metaRes.ok) throw new Error('Failed to fetch metadata');
     // const metadata = await metaRes.json();
@@ -36,7 +36,7 @@ async function sync() {
 
     // 4. If timestamps differ, grab the content
     console.log('New changes detected! Fetching fresh content...');
-    const exportUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}/export?mimeType=text/plain&key=${GOOGLE_DRIVE_API_KEY}`;
+    const exportUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}/export?mimeType=text/plain&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
     const contentRes = await fetch(exportUrl);
     const textContent = await contentRes.text();
 
