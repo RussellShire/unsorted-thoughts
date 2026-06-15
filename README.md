@@ -25,6 +25,7 @@ Otherwise it's very basic js and html with github actions.
 
 ### TODO
 - Caching the call to avoid the loading as the api call happens, ideally I'd find a crunchy way to do this for free.
-- Adding 'last updated' if possible from Google Drive API
+- Adding 'last updated' (would require a second call to `https://www.googleapis.com/drive/v3/files/${DOCUMENT_ID}?fields=modifiedTime,lastModifyingUser&key=${API_KEY}`)
+- Add shuffle button to reorder without refresh
 - Add search to filter poems on words, I keep doing this with ctrl-f so there's clearly user demand.
 - Possibly add support for adding dates to 'thoughts' so this could be used like a blog.
