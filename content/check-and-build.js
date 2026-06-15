@@ -6,21 +6,11 @@ const JSON_FILE = './content/data.json';
 
 async function sync() {
   try {
-
-    const metaUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}?fields=modifiedTime,name,lastModifyingUser&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
+    // 1. Fetch metadata first to check for changes
+    const metaUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}?fields=name,modifiedTime,lastModifyingUser&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
     const metaRes = await fetch(metaUrl);
-
-    if (!metaRes.ok) {
-        const errorData = await metaRes.text(); // Capture the detailed error message
-        console.error(`Google API request failed! Status: ${metaRes.status}`);
-        console.error(`Response details: ${errorData}`);
-        throw new Error('Failed to fetch metadata');
-    }
-    // // 1. Fetch metadata first to check for changes
-    // const metaUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}?fields=name,modifiedTime,lastModifyingUser&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
-    // const metaRes = await fetch(metaUrl);
-    // if (!metaRes.ok) throw new Error('Failed to fetch metadata');
-    // const metadata = await metaRes.json();
+    if (!metaRes.ok) throw new Error('Failed to fetch metadata');
+    const metadata = await metaRes.json();
 
     // 2. Read existing local JSON cache if it exists
     let localCache = null;
