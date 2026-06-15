@@ -3,8 +3,11 @@ document.body.addEventListener('touchstart', function() {}, {passive: true});
 
 updatePage();
 
-function updatePage() {
-    const {content, metadata} = loadWebsiteData();
+async function updatePage() {
+    const data = await loadWebsiteData();
+    if (!data) return;
+
+    const { content, metadata } = data;
 
     // Update the counter
     const counter = document.querySelector('.counter');
@@ -19,14 +22,22 @@ function updatePage() {
     // TODO Update this to make a copy rather than editing in place
     shuffleArray(content);
 
-    content.forEach(thoughtElements => {
+    content.forEach(thoughtHtmlStrings => {
         // Create a wrapper div for this specific "thought" card
         const thoughtCard = document.createElement('div');
         thoughtCard.classList.add('thought-card');
 
         // Append all paragraphs belonging to this thought into the card
-        thoughtElements.forEach(p => {
-            thoughtCard.appendChild(p.cloneNode(true));
+        //  is now an array of HTML strings
+        thoughtHtmlStrings.forEach(htmlString => {
+            // Create a temporary container to turn the string back into DOM elements
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlString;
+            
+            // Move all children of tempDiv into the card
+            while (tempDiv.firstChild) {
+                thoughtCard.appendChild(tempDiv.firstChild);
+            }
         });
 
         // Set rotation
