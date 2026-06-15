@@ -1,6 +1,29 @@
  // Touch support for ios to use :active class
 document.body.addEventListener('touchstart', function() {}, {passive: true});
 
+async function loadWebsiteData() {
+  try {
+    // 1. Fetch the static JSON file from your GitHub Pages deployment
+    const response = await fetch('./content/data.json');
+    const data = await response.json(); // Native parsing into a JS Object
+
+    // 2. Destructure the JSON structure we built
+    const { title, lastModified, author } = data.metadata;
+    const { content } = data;
+
+    // 3. Render it to your HTML page dynamically
+    document.getElementById('doc-title').innerText = title;
+    document.getElementById('doc-meta').innerText = `Last updated by ${author} on ${new Date(lastModified).toLocaleDateString()}`;
+    document.getElementById('doc-body').innerText = content;
+
+  } catch (error) {
+    console.error("Could not fetch cached JSON dataset:", error);
+  }
+}
+
+loadWebsiteData();
+
+// OLD Below
 const API_KEY = 'DRIVE_API_KEY_PLACEHOLDER';
 const DOCUMENT_ID = 'DOC_ID_PLACEHOLDER';
 

@@ -3,9 +3,13 @@ name: Deploy Static Content to Pages
 on:
   push:
     branches: ["main"]
+  # Keep the schedule so it updates even if you don't push code
+  schedule:
+    - cron: '0 * * * *' 
+  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write # Changed to 'write' so the bot can push the updated JSON back to your repo
   pages: write
   id-token: write
 
@@ -21,20 +25,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
-      - name: Inject Google Secrets
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # --- THE INTEGRATED SYNC STEP ---
+      - name: Sync Google Doc to JSON
+        env:
+          DOCUMENT_ID: ${{ secrets.DOCUMENT_ID }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: |
-          sed -i "s/DRIVE_API_KEY_PLACEHOLDER/${{ secrets.GOOGLE_DRIVE_API_KEY }}/g" js/app.js
-          sed -i "s/DOC_ID_PLACEHOLDER/${{ secrets.GOOGLE_DOC_ID }}/g" js/app.js
+          node check-and-build.js
           
+      # --- COMMIT THE JSON BACK TO THE REPO ---
+      - name: Commit and Push if updated
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/data.json
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore: auto-update Google Doc JSON cache"
+            git push
+          fi
+
+      # --- PAGES DEPLOYMENT ---
       - name: Setup Pages
         uses: actions/configure-pages@v5 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.' 
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+        
