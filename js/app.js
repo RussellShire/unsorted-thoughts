@@ -3,7 +3,6 @@ document.body.addEventListener('touchstart', function() {}, {passive: true});
 
 updatePage();
 
-
 function updatePage() {
     const {content, metadata} = loadWebsiteData();
 
