@@ -36,7 +36,7 @@ jobs:
       - name: Sync Google Doc to JSON
         env:
           GOOGLE_DOC_ID: ${{ secrets.GOOGLE_DOC_ID }}
-          GOOGLE_DRIVE_API_KEY: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
+          GOOGLE_DRIVE_UNRESTRICTED_API: ${{ secrets.GOOGLE_DRIVE_UNRESTRICTED_API }}
         run: |
           node content/check-and-build.js
           

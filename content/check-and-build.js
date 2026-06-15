@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const GOOGLE_DOC_ID = process.env.GOOGLE_DOC_ID;
-const GOOGLE_DRIVE_API_KEY = process.env.GOOGLE_DRIVE_API_KEY;
+const GOOGLE_DRIVE_UNRESTRICTED_API = process.env.GOOGLE_DRIVE_UNRESTRICTED_API;
 const JSON_FILE = './content/data.json';
 
 async function sync() {
