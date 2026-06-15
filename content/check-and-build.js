@@ -1,4 +1,5 @@
 const fs = require('fs');
+const cheerio = require('cheerio');
 
 const GOOGLE_DOC_ID = process.env.GOOGLE_DOC_ID;
 const GOOGLE_DRIVE_UNRESTRICTED_API = process.env.GOOGLE_DRIVE_UNRESTRICTED_API;
@@ -26,16 +27,18 @@ async function sync() {
 
     // 4. If timestamps differ, grab the content
     console.log('New changes detected! Fetching fresh content...');
-    const exportUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}/export?mimeType=text/plain&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
+    const exportUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}/export?mimeType=text/html&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
     const contentRes = await fetch(exportUrl);
-    const textContent = await contentRes.text();
+    const htmlString = await contentRes.text();
+
+    const thoughts = parseHtmlStringToArray(htmlString);
 
     // 5. Construct a structured JSON payload
     const updatedCacheData = {
       metadata: {
         lastModified: metadata.modifiedTime,
       },
-      content: textContent,
+      content: thoughts,
       lastSyncedAt: new Date().toISOString()
     };
 
@@ -47,6 +50,50 @@ async function sync() {
     console.error('Error syncing document:', error);
     process.exit(1);
   }
+}
+
+function parseHtmlStringToArray(htmlString) {
+    const $ = cheerio.load(htmlString);
+    
+    // Remove styles
+    $('[style]').removeAttr('style');
+
+    const thoughts = [];
+    let publishThought = true;
+
+    // Use cheerio's each to iterate
+    $('p').each((index, element) => {
+        const paragraph = $(element);
+        const text = paragraph.text().trim();
+        const isNewThought = text.includes('#');
+
+        // Logic for line breaks
+        if (!text) {
+            paragraph.addClass('lineBreak');
+        }
+
+        // Split into thoughts
+        if (isNewThought && !text.toLowerCase().includes('no publish')) {
+            publishThought = true;
+            thoughts.push([]);
+        }
+
+        if (isNewThought && text.toLowerCase().includes('no publish')) {
+            publishThought = false;
+        }
+
+        if (publishThought && !isNewThought) {
+            // Note: Saving raw HTML is usually better than saving the paragraph object
+            thoughts[thoughts.length - 1].push(paragraph.html());
+        }
+
+        // Set title
+        if (text.charAt(text.length - 1) === ':') {
+            paragraph.addClass('title');
+        }
+    });
+
+    return thoughts;
 }
 
 sync();
