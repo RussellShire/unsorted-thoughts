@@ -38,7 +38,7 @@ jobs:
           DOCUMENT_ID: ${{ secrets.DOCUMENT_ID }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: |
-          node check-and-build.js
+          node content/check-and-build.js
           
       # --- COMMIT THE JSON BACK TO THE REPO ---
       - name: Commit and Push if updated
