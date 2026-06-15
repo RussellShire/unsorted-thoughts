@@ -2,8 +2,11 @@
 
 ## Overview
 This repo is basically a way to instantly publish poetry from my phone. I use the Google Drive API to scrape a google doc.
+
 The styling is, distinctive, because I like it.
+
 The poems are shuffled on every load to make it sillier.
+
 There is a counter so people can know if there's a new poem since they last visited, although the shuffle makes it very hard to actually find it.
 
 ## Tech
@@ -11,7 +14,9 @@ This is deliberately as simple as possible, using html and javascript without an
 
 ## How Google Docs are read
 Individual notes ('thoughts') are separated by a '#'
+
 Titles are lines that end with a ':'
+
 Styling is stripped off but whitespace, new lines and paragraphs are preserved (mainly to support poetry).
 
 ## Running this project
@@ -23,4 +28,3 @@ Otherwise it's very basic js and html with github actions.
 - Adding 'last updated' if possible from Google Drive API
 - Add search to filter poems on words, I keep doing this with ctrl-f so there's clearly user demand.
 - Possibly add support for adding dates to 'thoughts' so this could be used like a blog.
-- 
