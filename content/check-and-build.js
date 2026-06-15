@@ -9,7 +9,7 @@ async function sync() {
     // 1. Fetch metadata first to check for changes
     const metaUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}?fields=name,modifiedTime,lastModifyingUser&key=${GOOGLE_DRIVE_API_KEY}`;
     const metaRes = await fetch(metaUrl);
-    if (!metaRes.ok) throw new Error('Failed to fetch metadata');
+    if (!metaRes.ok) throw new Error('Failed to fetch metadata', GOOGLE_DOC_ID, GOOGLE_DRIVE_API_KEY);
     const metadata = await metaRes.json();
 
     // 2. Read existing local JSON cache if it exists
