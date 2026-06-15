@@ -35,7 +35,7 @@ jobs:
       # --- THE INTEGRATED SYNC STEP ---
       - name: Sync Google Doc to JSON
         env:
-          DOCUMENT_ID: ${{ secrets.DOCUMENT_ID }}
+          DOCUMENT_ID: ${{ secrets.GOOGLE_DOC_ID }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: |
           node content/check-and-build.js
