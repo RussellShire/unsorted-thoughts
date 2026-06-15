@@ -15,6 +15,8 @@ This is deliberately as simple as possible, using html and javascript without an
 ## How Google Docs are read
 Individual notes ('thoughts') are separated by a '#'
 
+Adding 'No Publish' after '#' will mean it won't go onto the page.
+
 Titles are lines that end with a ':'
 
 Styling is stripped off but whitespace, new lines and paragraphs are preserved (mainly to support poetry).

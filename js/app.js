@@ -8,13 +8,10 @@ async function loadWebsiteData() {
     const data = await response.json(); // Native parsing into a JS Object
 
     // 2. Destructure the JSON structure we built
-    const { title, lastModified, author } = data.metadata;
+    const lastModified = data.metadata?.lastModified;
     const { content } = data;
 
-    // 3. Render it to your HTML page dynamically
-    document.getElementById('doc-title').innerText = title;
-    document.getElementById('doc-meta').innerText = `Last updated by ${author} on ${new Date(lastModified).toLocaleDateString()}`;
-    document.getElementById('doc-body').innerText = content;
+    console.log('json', 'content:', content, 'lastModified:', lastModified)
 
   } catch (error) {
     console.error("Could not fetch cached JSON dataset:", error);
@@ -23,12 +20,6 @@ async function loadWebsiteData() {
 
 loadWebsiteData();
 
-// OLD Below
-const API_KEY = 'DRIVE_API_KEY_PLACEHOLDER';
-const DOCUMENT_ID = 'DOC_ID_PLACEHOLDER';
-
-// We ask the Drive API to export the Google Doc directly as HTML
-const url = `https://www.googleapis.com/drive/v3/files/${DOCUMENT_ID}/export?mimeType=text/html&key=${API_KEY}`;
 
 fetch(url)
     .then(response => {
