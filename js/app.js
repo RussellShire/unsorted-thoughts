@@ -28,16 +28,8 @@ async function updatePage() {
         thoughtCard.classList.add('thought-card');
 
         // Append all paragraphs belonging to this thought into the card
-        //  is now an array of HTML strings
         thoughtHtmlStrings.forEach(htmlString => {
-            // Create a temporary container to turn the string back into DOM elements
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = htmlString;
-            
-            // Move all children of tempDiv into the card
-            while (tempDiv.firstChild) {
-                thoughtCard.appendChild(tempDiv.firstChild);
-            }
+            thoughtCard.insertAdjacentHTML('beforeend', htmlString);
         });
 
         // Set rotation

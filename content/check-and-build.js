@@ -84,7 +84,7 @@ function parseHtmlStringToArray(htmlString) {
 
         if (publishThought && !isNewThought) {
             // Note: Saving raw HTML is usually better than saving the paragraph object
-            thoughts[thoughts.length - 1].push(paragraph.html());
+            thoughts[thoughts.length - 1].push(paragraph[0].outerHTML());
         }
 
         // Set title
