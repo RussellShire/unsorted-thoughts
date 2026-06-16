@@ -58,7 +58,7 @@ function parseHtmlStringToArray(htmlString) {
     // Remove styles
     $('[style]').removeAttr('style');
 
-    const thoughts = [];
+    const thoughts = [[]];
     let publishThought = true;
 
     // Use cheerio's each to iterate
