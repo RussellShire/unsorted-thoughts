@@ -1,5 +1,6 @@
 const fs = require('fs');
 const cheerio = require('cheerio');
+const { log } = require('console');
 
 const GOOGLE_DOC_ID = process.env.GOOGLE_DOC_ID;
 const GOOGLE_DRIVE_UNRESTRICTED_API = process.env.GOOGLE_DRIVE_UNRESTRICTED_API;
@@ -30,6 +31,8 @@ async function sync() {
     const exportUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}/export?mimeType=text/html&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
     const contentRes = await fetch(exportUrl);
     const htmlString = await contentRes.text();
+
+    console.log(htmlString);
 
     const thoughts = parseHtmlStringToArray(htmlString);
 
