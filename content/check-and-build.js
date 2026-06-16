@@ -27,7 +27,7 @@ async function sync() {
 
     // 4. If timestamps differ, grab the content
     console.log('New changes detected! Fetching fresh content...');
-    const exportUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}/export?mimeType=html/html&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
+    const exportUrl = `https://www.googleapis.com/drive/v3/files/${GOOGLE_DOC_ID}/export?mimeType=text/html&key=${GOOGLE_DRIVE_UNRESTRICTED_API}`;
     const contentRes = await fetch(exportUrl);
     const htmlString = await contentRes.text();
 
