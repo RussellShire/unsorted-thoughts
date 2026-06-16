@@ -58,13 +58,13 @@ function parseHtmlStringToArray(htmlString) {
     // Remove styles
     $('[style]').removeAttr('style');
 
-    const thoughts = [[]];
+    const thoughts = [];
     let publishThought = true;
 
     // Use cheerio's each to iterate
     $('p').each((index, element) => {
         const paragraph = $(element);
-        const text = paragraph.text().trim();
+        const text = paragraph.text().replace(/\s+/g, ' ').trim();
         const isNewThought = text.includes('#');
 
         // Logic for line breaks
