@@ -32,8 +32,6 @@ async function sync() {
     const contentRes = await fetch(exportUrl);
     const htmlString = await contentRes.text();
 
-    console.log(htmlString);
-
     const thoughts = parseHtmlStringToArray(htmlString);
 
     // 5. Construct a structured JSON payload
@@ -87,7 +85,7 @@ function parseHtmlStringToArray(htmlString) {
 
         if (publishThought && !isNewThought) {
             // Note: Saving raw HTML is usually better than saving the paragraph object
-            thoughts[thoughts.length - 1].push(paragraph[0].outerHTML);
+            thoughts[thoughts.length - 1].push(paragraph.prop('outerHTML'));
         }
 
         // Set title
