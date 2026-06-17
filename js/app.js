@@ -6,7 +6,6 @@ updatePage();
 const shuffleButton = document.querySelector('#shuffle-button');
 
 function handleShuffleClicked() {
-  console.log('Button was clicked!');
   updatePage();
 }
 

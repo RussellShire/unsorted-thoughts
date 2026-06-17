@@ -1,7 +1,12 @@
-body {
+body, #shuffle-button {
     font-family: "Special Elite", Roboto, sans-serif;
     line-height: 1.6;
     color: #333;
+}
+
+#shuffle-button {
+    background-color: none;
+    border: 0px solid white;
 }
 
 .container {
