@@ -3,6 +3,15 @@ document.body.addEventListener('touchstart', function() {}, {passive: true});
 
 updatePage();
 
+const shuffleButton = document.querySelector('#shuffle-button');
+
+function handleShuffleClicked() {
+  console.log('Button was clicked!');
+  updatePage();
+}
+
+button.addEventListener('click', handleShuffleClicked);
+
 async function updatePage() {
     const data = await loadWebsiteData();
     if (!data) return;
