@@ -5,14 +5,12 @@ updatePage();
 
 const shuffleButton = document.querySelector('#shuffle-button');
 
-console.log('shuffleButton', shuffleButton);
-
 function handleShuffleClicked() {
   console.log('Button was clicked!');
   updatePage();
 }
 
-button.addEventListener('click', handleShuffleClicked);
+shuffleButton.addEventListener('click', handleShuffleClicked);
 
 async function updatePage() {
     const data = await loadWebsiteData();
