@@ -21,8 +21,10 @@ async function sync() {
     }
 
     // 3. Compare timestamps. If they match, abort to save GitHub Actions runner minutes!
-    if (localCache && localCache.metadata.modifiedTime === metadata.modifiedTime) {
+    if (localCache && localCache.metadata.lastModified === metadata.modifiedTime) {
       console.log('No changes detected in Google Doc. Skipping update.');
+
+      console.log('local time', localCache.metadata.lastModified, 'fetched time', metadata.modifiedTime)
       return;
     }
 
