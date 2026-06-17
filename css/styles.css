@@ -5,7 +5,7 @@ body, #shuffle-button {
 }
 
 #shuffle-button {
-    background-color: none;
+    background: transparent;
     border: 0px solid white;
 }
 
