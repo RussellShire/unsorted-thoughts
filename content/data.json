@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastModified": "2026-07-16T11:55:22.455Z"
+    "lastModified": "2026-07-28T14:01:58.977Z"
   },
   "content": [
     [
@@ -11,6 +11,12 @@
       "<p><span>Part of me </span></p>",
       "<p><span>will always be</span></p>",
       "<p><span>Living by the sea </span></p>",
+      "<p class=\"lineBreak\"><span></span></p>"
+    ],
+    [
+      "<p class=\"lineBreak\"><span></span></p>",
+      "<p><span>The funeral of a computer</span></p>",
+      "<p><span>Prophecy isn’t what it used to be</span></p>",
       "<p class=\"lineBreak\"><span></span></p>"
     ],
     [
@@ -3007,5 +3013,5 @@
       "<p class=\"lineBreak\"><span></span></p>"
     ]
   ],
-  "lastSyncedAt": "2026-07-16T14:17:56.435Z"
+  "lastSyncedAt": "2026-07-28T14:31:30.759Z"
 }
