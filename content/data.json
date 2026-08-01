@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastModified": "2026-07-30T21:42:45.193Z"
+    "lastModified": "2026-08-01T10:36:36.629Z"
   },
   "content": [
     [
@@ -1337,6 +1337,15 @@
       "<p class=\"lineBreak\"><span></span></p>",
       "<p><span>We killed all the wolves.</span></p>",
       "<p><span>Now we scare ourselves.</span></p>",
+      "<p class=\"lineBreak\"><span></span></p>",
+      "<p><span>We killed all the gods.</span></p>",
+      "<p><span>Now we worship ourselves.</span></p>",
+      "<p class=\"lineBreak\"><span></span></p>"
+    ],
+    [
+      "<p class=\"lineBreak\"><span></span></p>",
+      "<p><span>I tied superman to a chair</span></p>",
+      "<p><span>And made him read books to me</span></p>",
       "<p class=\"lineBreak\"><span></span></p>"
     ],
     [
@@ -3019,5 +3028,5 @@
       "<p class=\"lineBreak\"><span></span></p>"
     ]
   ],
-  "lastSyncedAt": "2026-07-30T22:16:34.627Z"
+  "lastSyncedAt": "2026-08-01T11:32:50.484Z"
 }
