@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastModified": "2026-09-12T21:05:04.253Z"
+    "lastModified": "2026-09-17T13:53:10.686Z"
   },
   "content": [
     [
@@ -27,6 +27,14 @@
     ],
     [
       "<p class=\"lineBreak\"><span></span></p>",
+      "<p><span>I am sorry to say the sad songs are starting to make sense</span></p>",
+      "<p><span>Possibly not a problem, but probably should prepare for one</span></p>",
+      "<p><span>In the meantime maybe it might be time to move to the music</span></p>",
+      "<p><span>Defiantly dancing, definitely not distracting, decidedly dancing</span></p>",
+      "<p class=\"lineBreak\"><span>&nbsp;</span></p>"
+    ],
+    [
+      "<p class=\"lineBreak\"><span></span></p>",
       "<p><span>Engage the enemy more closely</span></p>",
       "<p><span>We ride and we die then we live forever </span></p>",
       "<p class=\"lineBreak\"><span></span></p>"
@@ -40,7 +48,8 @@
       "<p><span>When I should be building bombs</span></p>",
       "<p class=\"lineBreak\"><span></span></p>",
       "<p><span>If art isn’t an act of resistance</span></p>",
-      "<p><span>Why did they stop us studying it</span></p>",
+      "<p><span>Why did they say we shouldn’t study it</span></p>",
+      "<p class=\"lineBreak\"><span></span></p>",
       "<p class=\"lineBreak\"><span></span></p>"
     ],
     [
@@ -66,7 +75,7 @@
       "<p class=\"lineBreak\"><span></span></p>",
       "<p><span>If it's just a social construct </span></p>",
       "<p><span>Then why does it hurt?</span></p>",
-      "<p><span>It must be pretty badly built</span></p>",
+      "<p><span>They should learn how to build</span></p>",
       "<p><span>Because we keep getting killed</span></p>",
       "<p class=\"lineBreak\"><span></span></p>"
     ],
@@ -79,7 +88,6 @@
       "<p class=\"lineBreak\"><span></span></p>"
     ],
     [
-      "<p class=\"lineBreak\"><span></span></p>",
       "<p class=\"lineBreak\"><span></span></p>",
       "<p><span>“The funeral of a computer”</span></p>",
       "<p><span>Prophecy isn’t what it used to be</span></p>",
@@ -3125,5 +3133,5 @@
       "<p class=\"lineBreak\"><span></span></p>"
     ]
   ],
-  "lastSyncedAt": "2026-09-12T22:13:26.986Z"
+  "lastSyncedAt": "2026-09-17T16:54:47.656Z"
 }
