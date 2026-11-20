@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastModified": "2026-11-14T12:37:34.873Z"
+    "lastModified": "2026-11-20T09:30:58.141Z"
   },
   "content": [
     [
@@ -23,6 +23,14 @@
       "<p><span>So I rinse the bastards</span></p>",
       "<p><span>They wouldn't let me win</span></p>",
       "<p><span>But I did regardless</span></p>",
+      "<p class=\"lineBreak\"><span></span></p>"
+    ],
+    [
+      "<p class=\"lineBreak\"><span></span></p>",
+      "<p><span>Didn't know how good I had it</span></p>",
+      "<p><span>But now I do</span></p>",
+      "<p><span>Don't know what you've got</span></p>",
+      "<p><span>&nbsp;til it's gone is true</span></p>",
       "<p class=\"lineBreak\"><span></span></p>"
     ],
     [
@@ -3155,5 +3163,5 @@
       "<p class=\"lineBreak\"><span></span></p>"
     ]
   ],
-  "lastSyncedAt": "2026-11-14T16:35:11.782Z"
+  "lastSyncedAt": "2026-11-20T11:26:01.512Z"
 }
