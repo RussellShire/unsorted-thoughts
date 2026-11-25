@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastModified": "2026-11-23T14:43:58.823Z"
+    "lastModified": "2026-11-25T13:11:20.982Z"
   },
   "content": [
     [
@@ -31,6 +31,15 @@
       "<p><span>But now I do</span></p>",
       "<p><span>Don't know what you've got</span></p>",
       "<p><span>&nbsp;til it's gone is true</span></p>",
+      "<p class=\"lineBreak\"><span></span></p>"
+    ],
+    [
+      "<p class=\"lineBreak\"><span></span></p>",
+      "<p><span>You left</span></p>",
+      "<p><span>And took part of me </span></p>",
+      "<p><span>Waves Wash over </span></p>",
+      "<p><span>I tend the lighthouse </span></p>",
+      "<p><span>To keep the ships at bay </span></p>",
       "<p class=\"lineBreak\"><span></span></p>"
     ],
     [
@@ -3169,5 +3178,5 @@
       "<p class=\"lineBreak\"><span></span></p>"
     ]
   ],
-  "lastSyncedAt": "2026-11-23T20:05:49.227Z"
+  "lastSyncedAt": "2026-11-25T19:53:31.932Z"
 }
