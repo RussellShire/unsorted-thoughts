@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastModified": "2026-11-25T13:11:20.982Z"
+    "lastModified": "2026-11-26T16:57:59.006Z"
   },
   "content": [
     [
@@ -35,6 +35,17 @@
     ],
     [
       "<p class=\"lineBreak\"><span></span></p>",
+      "<p><span>This isn’t high art</span></p>",
+      "<p><span>This is my art</span></p>",
+      "<p><span>Some would say</span></p>",
+      "<p><span>This isn’t quite art</span></p>",
+      "<p class=\"lineBreak\"><span></span></p>",
+      "<p><span>You should try art</span></p>",
+      "<p><span>Don’t think, just start</span></p>",
+      "<p class=\"lineBreak\"><span></span></p>"
+    ],
+    [
+      "<p class=\"lineBreak\"><span></span></p>",
       "<p><span>You left</span></p>",
       "<p><span>And took part of me </span></p>",
       "<p><span>Waves Wash over </span></p>",
@@ -61,12 +72,24 @@
       "<p><span>Writing poetry </span></p>",
       "<p><span>But I know it should be</span></p>",
       "<p><span>A fucking manifesto</span></p>",
-      "<p><span>Writing songs</span></p>",
-      "<p><span>When I should be building bombs</span></p>",
+      "<p><span>Creating songs</span></p>",
+      "<p><span>Instead of pipe bombs</span></p>",
       "<p class=\"lineBreak\"><span></span></p>",
       "<p><span>If art isn’t an act of resistance</span></p>",
-      "<p><span>Why did they say we shouldn’t study it</span></p>",
+      "<p><span>Why do they say we shouldn’t study it?</span></p>",
+      "<p class=\"lineBreak\"><span></span></p>"
+    ],
+    [
       "<p class=\"lineBreak\"><span></span></p>",
+      "<p><span>My egg yokes are golden </span></p>",
+      "<p><span>Greek yogurt is authentic</span></p>",
+      "<p><span>Champagne cider nowadays</span></p>",
+      "<p><span>But I’m drinking and eating alone</span></p>",
+      "<p class=\"lineBreak\"><span></span></p>",
+      "<p><span>I paid more for a car back then</span></p>",
+      "<p><span>Than my headphones now</span></p>",
+      "<p><span>noise cancelling</span></p>",
+      "<p><span>myself screaming</span></p>",
       "<p class=\"lineBreak\"><span></span></p>"
     ],
     [
@@ -2373,7 +2396,7 @@
       "<p><span>Smother it with sunscreen</span></p>",
       "<p><span>Basking as our smiles beam</span></p>",
       "<p><span>Summer smells like sweat,</span></p>",
-      "<p><span>even tastes es of it it</span></p>",
+      "<p><span>even tastes of it</span></p>",
       "<p class=\"lineBreak\"><span></span></p>"
     ],
     [
@@ -3178,5 +3201,5 @@
       "<p class=\"lineBreak\"><span></span></p>"
     ]
   ],
-  "lastSyncedAt": "2026-11-25T19:53:31.932Z"
+  "lastSyncedAt": "2026-11-26T22:16:08.372Z"
 }
