@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "lastModified": "2026-11-26T16:57:59.006Z"
+    "lastModified": "2026-11-27T09:39:01.363Z"
   },
   "content": [
     [
@@ -1523,9 +1523,16 @@
     ],
     [
       "<p class=\"lineBreak\"><span></span></p>",
-      "<p><span>You're a suicide jager bomber</span></p>",
-      "<p><span>Your rose (wine) tinted glasses</span></p>",
-      "<p><span>Are never half empty</span></p>",
+      "<p><span>Suicide jager bomb</span></p>",
+      "<p><span>Ordering with a song</span></p>",
+      "<p><span>Rose tinted glasses</span></p>",
+      "<p><span>Never half empty</span></p>",
+      "<p><span>Flip the table quick</span></p>",
+      "<p><span>We’re at a picnic</span></p>",
+      "<p><span>Alfresco fiasco</span></p>",
+      "<p><span>Outsider in cider</span></p>",
+      "<p><span>Laugh til you cry</span></p>",
+      "<p><span>The whine’s a little dry</span></p>",
       "<p class=\"lineBreak\"><span></span></p>"
     ],
     [
@@ -3201,5 +3208,5 @@
       "<p class=\"lineBreak\"><span></span></p>"
     ]
   ],
-  "lastSyncedAt": "2026-11-26T22:16:08.372Z"
+  "lastSyncedAt": "2026-11-27T14:57:51.092Z"
 }
